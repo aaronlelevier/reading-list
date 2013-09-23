@@ -1,0 +1,18 @@
+{% extends "books/base.html" %}
+
+{% block page_title %}Browse{% endblock %}
+
+{% block content %}
+	<ul class="browse_tile_list">
+	{% for book in books %}
+		<li>
+			<div class="grid_3 browse_tile">
+				<a href="{% url 'books:detail' book.id %}"><img class="bookPicBrowse grid_3 omega" src="{{ STATIC_URL }}{{ book.file }}" alt="{{ book.title }}"></a>
+				
+				<p>{{ book.description|truncatechars:110 }} <a class="browse_href" href="{% url 'books:detail' book.id %}">More</a></p>
+
+			</div>
+			</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "books/base.html" %}
+
+{% block page_title %}Take Notes{% endblock %}
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+		<div class="grid_8 add_a_book">
+			{% if form.errors %}
+			<p style="color:red;">
+					Please correct the error{{ form.errors|pluralize }} below.</p>
+			{% endif %}
+			<form action="" method="post">{% csrf_token %}
+					{{ form.as_p }}
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+
+		{% if book %}
+			<div class="grid_4 omega">
+				<a href="{% url 'books:detail' book.display_url %}"><img class="bookPicDetail" src="{{ STATIC_URL }}{{ book.file }}" alt="{{ book.title }}"></a>
+			</div>
+		{% endif %}
+		
+	{% else %}
+		<p>Please <a href="{% url 'books:login_view' %}">Log in</a> or <a href="{% url 'books:createUser' %}">Create an Account</a> to take notes.
+	{% endif %}
+	
+{% endblock %}

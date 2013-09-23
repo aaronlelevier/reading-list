@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>Reading List</title>
+	<meta http-equiv="Content-Type" content="text/html: charset=utf-8"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css" type="text/css" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" media="screen">
+</head>
+<body>
+{% load staticfiles %}
+<div class="container">
+
+{% if latest_book_list %}
+	<ul>
+	{% for book in latest_book_list %}
+		<li class="bookTitle"><a href="{% url 'books:detail' book.id %}">{{ book.title }}</a></li>
+		<a href="{% url 'books:detail' book.id %}"><img class="bookPic" src="{% static book.file %}" alt="{{ book.title }}"></a>
+		<br><br>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No books are available.</p>
+{% endif %}
+
+</div>
+</body>
+</html>

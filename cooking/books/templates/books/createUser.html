@@ -1,0 +1,21 @@
+{% extends "books/base.html" %}
+
+{% block page_title %}Create Account{% endblock %}
+
+{% block content %}
+	<div class="add_a_book">
+		{% if form.errors %}
+			<p style="color:red;">
+				Please correct the error{{ form.errors|pluralize }} below.</p>
+		{% endif %}
+		<div class="grid_12 reset_password_error">
+			<ul>
+				<li>{{ message }}</li>
+			</ul>
+		</div>
+		<form action="" method="post">{% csrf_token %}
+				{{ form.as_p }}
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+{% endblock %}

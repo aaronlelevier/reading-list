@@ -1,0 +1,243 @@
+body {
+	font-family: times, sans-serif;
+}
+ul {
+	list-style-type: none;
+}
+
+a:link {color: black}
+a:visited {color: black}
+a:hover {color: red}
+a:active {color: black}
+
+.container {
+	width: 1000px;
+}
+
+/* -- Title Page (index.html) -- */
+.header {
+	display: inline;
+}
+.header a {
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.header_one {
+	border:1px solid;
+	border-radius:5px;
+}
+.header_pic{
+	width: 50px;
+	height: 50px;
+	border:1px solid;
+	float: right;
+	margin-right: 10px;
+	border-radius:5px;
+}
+.header_title a {
+	font-family: 'Frijole', sans-serif;
+	text-decoration: none;
+}
+.header_title p {	
+	font-size: 24px;
+	padding-left: 0px;
+	margin: 0 auto;
+}
+.base_username{
+	text-align: right;
+}
+.base_username a {font-family: Impact, sans-serif;}
+.base_login {
+	text-align: center;
+}
+.base_login a {
+	font-size: 14px;
+	font-family: times, sans-serif;
+}
+
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px;
+}
+input {
+  display:inline-block;
+  float: left;
+}
+textarea {
+	display:inline-block;
+	float: left;
+	width: 400px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+.add_a_book input[type=submit] {   
+	display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    vertical-align: middle;
+    margin-top: 25px;
+}
+
+.errorlist li {
+	color: red;
+	clear: both;
+}
+.contact_us label {width: 100px;}
+
+/* ADD_A_BOOK */
+#id_formA-title, #id_title, #id_subject, #id_name, #id_email {
+	width: 405px;
+}
+#id_book {
+	width: 412px;
+}
+#id_formB-first_name, #id_formB-last_name {
+	width: 220px;
+}
+
+
+.reading_title {
+	vertical-align: middle;
+	text-align: center;
+	padding-left: 10px;
+}
+.page_break {
+	width: 100%;
+	clear: both;
+}
+.header_link li{
+	text-align: center;
+}
+.header_link a {
+	text-decoration: none;
+	margin: 0 auto;
+	font-size: 18px;
+}
+
+/*-- Detail CSS --*/
+.book_title {
+	font-size: 18px;
+	font-family: times;
+	font-weight: normal;
+}
+.detail_pic {
+	margin: 0 auto;
+}
+.bookPicDetail {
+	margin-left: 20%;
+	margin-right: 20%;
+	height: 250px;
+	width: 200px;
+}
+.detail_author_list ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.detail_author_list ul li { display: inline; }
+.detail_description {
+	padding-top: 20px;
+}
+.detail_stay_left {
+	text-align: right;
+}
+
+.detail_note {
+	color: #888888;
+}
+.detail_note_headers strong {
+	font-family: 'IM+Fell+Double+Pica';
+	font-weight:normal;
+}
+
+
+
+/*-- Browse CSS --*/
+div.browse_tile {
+	width: 200px;
+}
+img.bookPicBrowse {
+	width: 200px;
+	height: 250px;
+	border: 1px solid #000;
+}
+.browse_tile_list li:nth-child[odd] {
+	margin-top: 30px;
+}
+a.browse_href{
+	color: red;
+}
+
+
+/*-- Contact CSS --*/
+.contact_info li{
+	text-align: center;
+}
+ul.contact_info {
+    padding: 0;
+    list-style-type: none;
+}
+.contact_spacer {
+	width: 80%
+
+}
+ 
+ /* other CSS */
+
+.bookPic {
+	height: 250px;
+	width: 200px;
+	margin: 0;
+}
+.books4x2 {
+    margin-left: 50px
+}
+
+.footer p{
+	text-align: center;
+}
+.spacer {
+	clear: both;
+	margin: 20px auto;
+}
+.authors {
+	display: inline-block;
+	margin: 0em 0.4em;
+}
+
+.bookTitle {
+	font-size: 16px;
+}
+
+.page_title {
+	text-align: center;
+}
+
+.bookTitle {
+	font-size: 1.6em;
+}
+
+/* Log-in View */
+.login_view label {
+	width: 100px;
+}
+#id_password, #id_username, #id_first_name, #id_last_name {
+	width: 200px;
+}
+
+.reset_password_error li {
+	color: red;
+}
+
+
+
+
+

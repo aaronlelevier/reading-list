@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<title>Reading List</title>
+	<meta http-equiv="Content-Type" content="text/html: charset=utf-8"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css" type="text/css" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" media="screen">
+</head>
+<body>
+{% load staticfiles %}
+<div class="container">
+
+	<div class="header">
+		<ul>
+
+			<li>
+				<div class="grid_2"><a href="#"><img class="header_pic" src="{{ STATIC_URL }}images/book_index_pic.png"></div>
+			</li>
+
+			<li>
+				<div class="grid_2 header_title"><a href="#"><p>Reading List</p></a></div>
+			</li>
+
+			<li>
+				<div class="grid_4">
+					<!-- Simple seach from google.com/code -->
+					<form name="search" id="search" action="#">
+						<input type="text" name="search" value="" placeholder="Start Searching..." accept-charset="UTF-8">
+					  <input type="submit" name="search" value="Search" />
+					</form>     
+				</div>
+			</li>
+
+			<li>
+				<div class="grid_2"><a href="#">Create Account</a></div>
+			</li>
+
+			<li>
+				<div class="grid_2 omega"><a href="#">Log In</a></div>
+			</li>
+
+		</ul>
+	</div>
+
+	<hr class="page_break">
+
+	<ul class="header_link">
+		<li><div class="grid_3"><a href="#">Home</a></div></li>
+		<li><div class="grid_3"><a href="book_list/">Book List</a></div></li>
+		<li><div class="grid_3"><a href="#">Browse</a></div></li>
+		<li><div class="grid_3 omega"><a href="#">Contact</a></div></li>
+	</ul>
+
+	<hr class="page_break">
+	<div class="grid_12 spacer"></div>
+
+	<div class="books4x2">
+		{% if latest_book_list %}
+			<ul>
+			{% for book in latest_book_list %}
+				<li>
+					<a href="{% url 'books:detail' book.id %}"><img class="bookPic grid_3 omega" src="{% static book.file %}" alt="{{ book.title }}"></a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No books are available.</p>
+		{% endif %}
+	</div>
+
+	<div class="grid_12 spacer"></div>
+
+	<hr class="page_break">
+	<div class="footer"><p>Created by <em>Aaron Lelever</em>. Powered using <em>Django | Python</em></div>
+	<hr class="page_break">
+
+
+
+</div>
+</body>
+</html>

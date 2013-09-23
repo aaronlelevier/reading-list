@@ -1,0 +1,59 @@
+{% extends "books/base.html" %}
+
+{% block page_title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+
+		<div class="add_a_book">
+			{% if form.errors %}
+				<p style="color:red;">
+					Please correct the error{{ form.errors|pluralize }} below.</p>
+			{% endif %}
+			<form action="" method="post">{% csrf_token %}
+					{{ form.as_p }}
+				<input type="submit" value="Update">
+			</form>
+		</div>
+
+		<div class="grid_12">
+			<p><a href="{% url 'books:change_password' %}">Change Password</a></p>
+		</div>
+
+		<div class="grid_12 spacer"></div>
+		<hr class="page_break">
+		<h1 class="page_title">My Books</h1>
+
+		{% if books %}
+			<ul>
+			{% for book in books %}
+				<li><a href="{% url 'books:detail' book.display_url %}">{{ book.title }}</a> 
+						<a href="{% url 'books:edit_a_book' book.display_url %}">&nbsp;edit</a></li>
+			{% endfor %}
+			</ul>
+
+		{% else %}
+			<p>Follow this <a href="{% url 'books:add_a_book' %}">Link </a> to add a book.</p>
+		{% endif %}
+
+
+		<div class="grid_12 spacer"></div>
+		<hr class="page_break">
+		<h1 class="page_title">My Notes</h1>
+
+	 	{% if notes %}
+
+			{% for each in notes %}
+				<div class="grid_12 detail_author_list detail_note_headers">
+					<div class="grid_12"><span class="detail_note">book: </span>{{ each.book }}</div>
+					<div class="grid_12"><span class="detail_note">note: </span><strong>{{ each.title }}</strong></div>
+					<div class="grid_12"><span class="detail_note">date: </span>{{ each.date }}</div>
+					<div class="grid_12">{{ each.note|linebreaks }}</div>
+					<div class="grid_12 spacer"></div>
+				</div>
+			{% endfor %}
+
+		{% else %}
+			<p>Follow this <a href="{% url 'books:take_notes' %}">Link </a> to take notes.</p>
+		{% endif %}
+
+{% endblock %}

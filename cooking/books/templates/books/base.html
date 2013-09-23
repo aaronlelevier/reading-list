@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		{% if tab_title %}
+			{{ tab_title }}
+		{% else %}
+			Reading List
+		{% endif %}
+	</title>
+	<meta http-equiv="Content-Type" content="text/html: charset=utf-8"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css" type="text/css" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Frijole' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Goblin+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" media="screen">
+	<link rel="shortcut icon" href="{{ STATIC_URL }}images/tab_header_book1.jpg">
+	<script>
+	function goBack()
+	  {
+	  window.history.back()
+	  }
+	</script>
+    <script src="http://code.jquery.com/jquery-1.5.js"></script>
+    <script>
+      function countChar(val) {
+        var len = val.value.length;
+        if (len >= 500) {
+          val.value = val.value.substring(0, 500);
+        } else {
+          $('#charNum').text(500 - len);
+        }
+      };
+    </script>
+</head>
+<body>
+{% load staticfiles %}
+<div class="container">
+
+	<div class="header">
+		<ul>
+
+			<li>
+				<div class="grid_4 header_title"><a href="{% url 'books:index' %}"><p>Reading List</p></a></div>
+			</li>
+
+			<li>
+				<div class="grid_4">
+					<form action="{% url 'books:search_results' %}" method="get">
+						<input type="text" name="q" value="" placeholder="Start Searching..." accept-charset="UTF-8">
+					  <input type="submit" value="Search" />
+					</form>    
+
+				</div>
+			</li>
+
+			<li>
+				<div class="grid_2 base_username">
+					{% if user.is_authenticated %}
+						<a href="{% url 'books:profile' %}">{{ user.username }}</a>
+					{% else %}
+						<a href="{% url 'books:createUser' %}">Create Account</a>
+					{% endif %}
+				</div>
+			</li>
+
+			<li>
+				<div class="grid_2 omega base_login">
+					{% if user.is_authenticated %}
+						<a href="{% url 'books:logout' %}">Log out</a>
+					{% else %}
+						<a href="{% url 'books:login_view' %}">Log In</a>
+					{% endif %}
+				</div>
+			</li>
+
+		</ul>
+	</div>
+
+	<hr class="page_break">
+
+	<ul class="header_link">
+		<li><div class="grid_2"><a href="{% url 'books:index' %}">Home</a></div></li>
+		<li><div class="grid_2"><a href="{% url 'books:mission' %}">Mission</a></div></li>
+		<li><div class="grid_2"><a href="{% url 'books:book_list' %}">Book List</a></div></li>
+		<li><div class="grid_2"><a href="{% url 'books:add_a_book' %}">Add a Book</a></div></li>
+		<li><div class="grid_2"><a href="{% url 'books:take_notes' %}">Take Notes</a></div></li>
+		<li><div class="grid_2 omega"><a href="{% url 'books:contact' %}">Contact</a></div></li>
+	</ul>
+
+	<hr class="page_break">
+	<div class="grid_12 spacer"></div>
+
+	<h1 class="page_title">{% block page_title %}{% endblock %}</h1>
+
+	{% block content %}{% endblock %}
+
+	<div class="grid_12 spacer"></div>
+
+	<hr class="page_break">
+	<div class="footer"><p>Created by <em>Aaron Lelevier</em>. Powered using <em>Django | Python</em></div>
+	<hr class="page_break">
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "books/base.html" %}
+
+{% block content %}
+	
+	<div class="books4x2">
+		{% if latest_book_list %}
+			<ul>
+			{% for book in latest_book_list %}
+				<li>
+					<a href="{% url 'books:detail' book.display_url %}"><img class="bookPic grid_3 omega" src="{{ STATIC_URL }}{{ book.file }}" alt="{{ book.title }}"></a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No books are available.</p>
+		{% endif %}
+	</div>
+
+{% endblock %}

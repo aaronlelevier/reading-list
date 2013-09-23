@@ -1,0 +1,57 @@
+{% extends "books/base.html" %}
+
+{% block content %}
+
+	<div class="grid_8 detail_author_list">
+		<ul>
+			<li>
+				Title: <strong>{{ book.title }}</strong>&nbsp; | Author{{ authors|pluralize }}: 
+					{% for author in authors %}
+						<strong>{{ author }}&nbsp; </strong>
+					{% endfor %}
+			</li>
+		</ul>
+	</div>
+
+	<div class="grid_8 detail_author_list">
+		<ul>
+			<li>Date Added: <strong>{{ book.publication_date }}</strong></li>
+		</ul>
+	</div>
+
+	<div class="grid_8 detail_author_list detail_description">
+		<ul>
+			<li><center><strong>Description</strong><center></li><br>
+			<li>{{ book.description|linebreaks }}</li>
+		</ul>
+	</div>
+
+	<div class="grid_4 omega">
+		<a href="{% url 'books:detail' book.display_url %}"><img class="bookPicDetail" src="{{ STATIC_URL }}{{ book.file }}" alt="{{ book.title }}"></a>
+	</div>
+
+	<div class="grid_12 spacer"></div>
+	<hr class="page_break">
+	<h1 class="page_title">Notes</h1>
+
+ 	{% if notes %}
+
+		{% for each in notes %}
+			<div class="grid_12 detail_author_list detail_note_headers">
+				<div class="grid_6"><span class="detail_note">note: </span><strong>{{ each.title }}</strong></div>
+				<div class="grid_6 omega detail_stay_left"><span class="detail_note">by: </span>{{ each.user }}&nbsp;&nbsp;&nbsp; <span class="detail_note">date: </span> {{ each.date }}</div>
+				<div class="grid_12">{{ each.note|linebreaks }}</div>
+				<br><br>
+			</div>
+		{% endfor %}
+
+	{% else %}
+<!-- 		<p>Follow this <a href="/books/take_notes/">Link </a> to take notes.</p>
+ -->		<p>Follow this <a href="{% url 'books:take_specific_notes' book.id %}">Link </a> to take notes.</p>
+	{% endif %}
+
+	<div class="grid_12 spacer"></div>
+	<div class="grid_12">
+		<input type="button" value="Back" onclick="goBack()">
+	</div>
+{% endblock %}

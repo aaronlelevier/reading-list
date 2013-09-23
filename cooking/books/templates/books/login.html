@@ -1,0 +1,27 @@
+{% extends "books/base.html" %}
+
+{% block page_title %}Log in{% endblock %}
+
+{% block content %}
+	<div class="add_a_book login_view">
+		{% if form.errors %}
+			<p style="color:red;">
+				Please correct the error{{ form.errors|pluralize }} below.</p>
+		{% endif %}
+
+		<div class="grid_12 reset_password_error">
+			<ul>
+				<li>{{ no_match }}</li>
+			</ul>
+		</div>
+
+		<form action="" method="post">{% csrf_token %}
+				{{ form.as_p }}
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+	<div class="grid_12">
+		<p><a href="{% url 'books:createUser' %}">Create Account</a></p>
+		<p><a href="{% url 'books:reset_password' %}">Reset Password</a></p>
+	</div>
+{% endblock %}
